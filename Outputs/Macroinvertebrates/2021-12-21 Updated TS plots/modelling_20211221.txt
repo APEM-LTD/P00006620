@@ -1,0 +1,252 @@
+		WHPT	
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                      0.861872   0.037225  23.153  < 2e-16 ***
+as.factor(watercourse)Gade       0.169327   0.057671   2.936  0.00352 ** 
+as.factor(watercourse)Lea       -0.165508   0.055351  -2.990  0.00296 ** 
+as.factor(watercourse)Mimram     0.275261   0.042453   6.484 2.66e-10 ***
+as.factor(watercourse)Misbourne  0.132069   0.039855   3.314  0.00101 ** 
+as.factor(watercourse)Ver        0.053184   0.040919   1.300  0.19444    
+as.factor(regime_type)SP        -0.021546   0.032823  -0.656  0.51194    
+as.factor(regime_type)E         -0.116115   0.121798  -0.953  0.34100    
+as.factor(Season)Spring         -0.029401   0.006265  -4.693 3.71e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value    
+s(years_post_restoration)  1.000  1.000  0.141 0.707082    
+s(distance_from_source)    1.999  1.999 13.159  2.5e-06 ***
+s(substrate_index)         1.000  1.000  4.029 0.045405 *  
+s(Q95z)                    1.890  1.988 21.083  < 2e-16 ***
+s(Q95zLS1)                 1.000  1.000  2.114 0.146733    
+s(Q95zLS2)                 1.000  1.000 12.732 0.000404 ***
+s(site_id)                67.986 75.000 10.698  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.839   Deviance explained = 86.7%
+GCV = 0.0046602  Scale est. = 0.0038379  n = 481
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df      F  p-value
+as.factor(watercourse)  5 22.130  < 2e-16
+as.factor(regime_type)  2  0.611    0.543
+as.factor(Season)       1 22.024 3.71e-06
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value
+s(years_post_restoration)  1.000  1.000  0.141 0.707082
+s(distance_from_source)    1.999  1.999 13.159  2.5e-06
+s(substrate_index)         1.000  1.000  4.029 0.045405
+s(Q95z)                    1.890  1.988 21.083  < 2e-16
+s(Q95zLS1)                 1.000  1.000  2.114 0.146733
+s(Q95zLS2)                 1.000  1.000 12.732 0.000404
+s(site_id)                67.986 75.000 10.698  < 2e-16
+		NTAXA	
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                      0.76648    0.06636  11.550  < 2e-16 ***
+as.factor(watercourse)Gade       0.13281    0.10103   1.315   0.1894    
+as.factor(watercourse)Lea       -0.09262    0.09651  -0.960   0.3378    
+as.factor(watercourse)Mimram     0.43362    0.07617   5.693 2.41e-08 ***
+as.factor(watercourse)Misbourne  0.14614    0.07211   2.027   0.0434 *  
+as.factor(watercourse)Ver       -0.01832    0.07366  -0.249   0.8037    
+as.factor(regime_type)SP        -0.13491    0.05928  -2.276   0.0234 *  
+as.factor(regime_type)E         -0.31397    0.24720  -1.270   0.2048    
+as.factor(Season)Spring          0.02808    0.01680   1.672   0.0953 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value    
+s(years_post_restoration)  1.000  1.000  0.008 0.927093    
+s(distance_from_source)    1.375  1.417  0.284 0.538202    
+s(substrate_index)         1.000  1.000 12.427 0.000472 ***
+s(Q95z)                    1.797  1.958 11.540 1.15e-05 ***
+s(Q95zLS1)                 1.000  1.000  7.103 0.008005 ** 
+s(Q95zLS2)                 1.000  1.000  0.050 0.823255    
+s(site_id)                61.568 76.000  4.888  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.645   Deviance explained = 70.1%
+GCV = 0.033447  Scale est. = 0.028041  n = 481
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df      F  p-value
+as.factor(watercourse)  5 12.780 1.52e-11
+as.factor(regime_type)  2  3.170   0.0430
+as.factor(Season)       1  2.796   0.0953
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value
+s(years_post_restoration)  1.000  1.000  0.008 0.927093
+s(distance_from_source)    1.375  1.417  0.284 0.538202
+s(substrate_index)         1.000  1.000 12.427 0.000472
+s(Q95z)                    1.797  1.958 11.540 1.15e-05
+s(Q95zLS1)                 1.000  1.000  7.103 0.008005
+s(Q95zLS2)                 1.000  1.000  0.050 0.823255
+s(site_id)                61.568 76.000  4.888  < 2e-16
+		LIFE	
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                      0.954725   0.019458  49.066  < 2e-16 ***
+as.factor(watercourse)Gade       0.093580   0.030063   3.113  0.00199 ** 
+as.factor(watercourse)Lea       -0.088061   0.029006  -3.036  0.00255 ** 
+as.factor(watercourse)Mimram     0.106931   0.022240   4.808 2.16e-06 ***
+as.factor(watercourse)Misbourne  0.038152   0.020886   1.827  0.06849 .  
+as.factor(watercourse)Ver        0.043436   0.021274   2.042  0.04183 *  
+as.factor(regime_type)SP         0.011637   0.017137   0.679  0.49748    
+as.factor(regime_type)E          0.006680   0.069139   0.097  0.92307    
+as.factor(Season)Spring         -0.014302   0.004448  -3.215  0.00141 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value    
+s(years_post_restoration)  1.000  1.000  0.509 0.476103    
+s(distance_from_source)    1.999  1.999 12.863  3.5e-06 ***
+s(substrate_index)         1.000  1.000  9.455 0.002250 ** 
+s(Q95z)                    1.945  1.997  8.318 0.000292 ***
+s(Q95zLS1)                 1.000  1.000  2.095 0.148524    
+s(Q95zLS2)                 1.000  1.000 11.075 0.000956 ***
+s(site_id)                63.208 75.000  8.018  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =   0.74   Deviance explained = 78.3%
+GCV = 0.0023067  Scale est. = 0.0019223  n = 481
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df      F  p-value
+as.factor(watercourse)  5 16.548 7.34e-15
+as.factor(regime_type)  2  0.231  0.79378
+as.factor(Season)       1 10.336  0.00141
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value
+s(years_post_restoration)  1.000  1.000  0.509 0.476103
+s(distance_from_source)    1.999  1.999 12.863  3.5e-06
+s(substrate_index)         1.000  1.000  9.455 0.002250
+s(Q95z)                    1.945  1.997  8.318 0.000292
+s(Q95zLS1)                 1.000  1.000  2.095 0.148524
+s(Q95zLS2)                 1.000  1.000 11.075 0.000956
+s(site_id)                63.208 75.000  8.018  < 2e-16
+		PSI	
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                      0.756918   0.086755   8.725  < 2e-16 ***
+as.factor(watercourse)Gade       0.414347   0.134117   3.089  0.00215 ** 
+as.factor(watercourse)Lea       -0.399557   0.129276  -3.091  0.00214 ** 
+as.factor(watercourse)Mimram     0.507402   0.099129   5.119 4.79e-07 ***
+as.factor(watercourse)Misbourne  0.176353   0.093094   1.894  0.05890 .  
+as.factor(watercourse)Ver        0.269910   0.094951   2.843  0.00470 ** 
+as.factor(regime_type)SP         0.001421   0.076433   0.019  0.98518    
+as.factor(regime_type)E         -0.453993   0.303793  -1.494  0.13585    
+as.factor(Season)Spring         -0.051962   0.018928  -2.745  0.00632 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value    
+s(years_post_restoration)  1.000  1.000  0.047 0.828972    
+s(distance_from_source)    1.999  1.999 10.086 4.58e-05 ***
+s(substrate_index)         1.000  1.000 13.658 0.000250 ***
+s(Q95z)                    1.908  1.991 23.783  < 2e-16 ***
+s(Q95zLS1)                 1.000  1.000  0.419 0.517600    
+s(Q95zLS2)                 1.000  1.000 11.648 0.000708 ***
+s(site_id)                64.089 75.000  8.475  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.764   Deviance explained = 80.3%
+GCV = 0.042066  Scale est. = 0.034983  n = 481
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + as.factor(Season) + s(distance_from_source, 
+    k = 3) + s(substrate_index, k = 3) + s(Q95z, k = 3) + s(Q95zLS1, 
+    k = 3) + s(Q95zLS2, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df      F p-value
+as.factor(watercourse)  5 18.297 2.3e-16
+as.factor(regime_type)  2  1.130 0.32398
+as.factor(Season)       1  7.536 0.00632
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value
+s(years_post_restoration)  1.000  1.000  0.047 0.828972
+s(distance_from_source)    1.999  1.999 10.086 4.58e-05
+s(substrate_index)         1.000  1.000 13.658 0.000250
+s(Q95z)                    1.908  1.991 23.783  < 2e-16
+s(Q95zLS1)                 1.000  1.000  0.419 0.517600
+s(Q95zLS2)                 1.000  1.000 11.648 0.000708
+s(site_id)                64.089 75.000  8.475  < 2e-16

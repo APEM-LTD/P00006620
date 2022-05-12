@@ -1,0 +1,298 @@
+		RMNI	
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                      7.78039    0.10759  72.316  < 2e-16 ***
+as.factor(watercourse)Gade       0.11519    0.15580   0.739 0.460355    
+as.factor(watercourse)Lea        0.10456    0.15625   0.669 0.503997    
+as.factor(watercourse)Mimram    -0.10527    0.12063  -0.873 0.383644    
+as.factor(watercourse)Misbourne -0.39905    0.11316  -3.526 0.000498 ***
+as.factor(watercourse)Ver       -0.04774    0.12259  -0.389 0.697302    
+as.factor(regime_type)SP         0.16919    0.09711   1.742 0.082656 .  
+as.factor(regime_type)E         -0.42954    0.30217  -1.422 0.156355    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                             edf Ref.df     F p-value    
+s(years_post_restoration)  1.000  1.000 0.005   0.944    
+s(month)                   1.000  1.000 0.430   0.512    
+s(distance_from_source)    1.000  1.000 0.196   0.658    
+s(Q90z)                    1.757  1.936 1.753   0.201    
+s(Q90zL1)                  1.000  1.000 0.263   0.609    
+s(site_id)                56.218 69.000 4.715  <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.593   Deviance explained = 67.8%
+GCV = 0.077264  Scale est. = 0.06093   n = 331
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df     F p-value
+as.factor(watercourse)  5 3.807  0.0024
+as.factor(regime_type)  2 2.821  0.0614
+
+Approximate significance of smooth terms:
+                             edf Ref.df     F p-value
+s(years_post_restoration)  1.000  1.000 0.005   0.944
+s(month)                   1.000  1.000 0.430   0.512
+s(distance_from_source)    1.000  1.000 0.196   0.658
+s(Q90z)                    1.757  1.936 1.753   0.201
+s(Q90zL1)                  1.000  1.000 0.263   0.609
+s(site_id)                56.218 69.000 4.715  <2e-16
+
+Method: GCV   Optimizer: magic
+Smoothing parameter selection converged after 12 iterations.
+The RMS GCV score gradient at convergence was 3.351299e-08 .
+The Hessian was positive definite.
+Model rank =  96 / 96 
+
+Basis dimension (k) checking results. Low p-value (k-index<1) may
+indicate that k is too low, especially if edf is close to k'.
+
+                             k'   edf k-index p-value
+s(years_post_restoration)  2.00  1.00    1.21    1.00
+s(month)                   2.00  1.00    1.06    0.89
+s(distance_from_source)    2.00  1.00    1.19    1.00
+s(Q90z)                    2.00  1.76    1.19    1.00
+s(Q90zL1)                  2.00  1.00    1.15    1.00
+s(site_id)                78.00 56.22      NA      NA
+		RMHI	
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                      7.57150    0.08878  85.287   <2e-16 ***
+as.factor(watercourse)Gade       0.11895    0.12500   0.952   0.3423    
+as.factor(watercourse)Lea       -0.03180    0.12455  -0.255   0.7987    
+as.factor(watercourse)Mimram     0.03402    0.09758   0.349   0.7277    
+as.factor(watercourse)Misbourne -0.20960    0.09231  -2.271   0.0241 *  
+as.factor(watercourse)Ver        0.06208    0.09935   0.625   0.5327    
+as.factor(regime_type)SP         0.11936    0.07771   1.536   0.1260    
+as.factor(regime_type)E          0.08372    0.23658   0.354   0.7238    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                             edf Ref.df     F p-value    
+s(years_post_restoration)  1.000   1.00 0.420  0.5176    
+s(month)                   1.000   1.00 0.018  0.8939    
+s(distance_from_source)    1.000   1.00 0.347  0.5565    
+s(Q90z)                    1.634   1.86 1.991  0.0882 .  
+s(Q90zL1)                  1.000   1.00 1.330  0.2501    
+s(site_id)                54.745  66.00 4.892  <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.603   Deviance explained = 69.6%
+GCV = 0.040635  Scale est. = 0.03102   n = 289
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df     F p-value
+as.factor(watercourse)  5 2.401  0.0381
+as.factor(regime_type)  2 1.198  0.3036
+
+Approximate significance of smooth terms:
+                             edf Ref.df     F p-value
+s(years_post_restoration)  1.000  1.000 0.420  0.5176
+s(month)                   1.000  1.000 0.018  0.8939
+s(distance_from_source)    1.000  1.000 0.347  0.5565
+s(Q90z)                    1.634  1.860 1.991  0.0882
+s(Q90zL1)                  1.000  1.000 1.330  0.2501
+s(site_id)                54.745 66.000 4.892  <2e-16
+
+Method: GCV   Optimizer: magic
+Smoothing parameter selection converged after 10 iterations.
+The RMS GCV score gradient at convergence was 1.890891e-08 .
+The Hessian was positive definite.
+Model rank =  93 / 93 
+
+Basis dimension (k) checking results. Low p-value (k-index<1) may
+indicate that k is too low, especially if edf is close to k'.
+
+                             k'   edf k-index p-value
+s(years_post_restoration)  2.00  1.00    1.31    1.00
+s(month)                   2.00  1.00    1.01    0.58
+s(distance_from_source)    2.00  1.00    1.29    1.00
+s(Q90z)                    2.00  1.63    1.15    0.99
+s(Q90zL1)                  2.00  1.00    1.25    1.00
+s(site_id)                75.00 54.74      NA      NA
+		NTAXA	
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                       2.6386     0.6851   3.852 0.000148 ***
+as.factor(watercourse)Gade        2.5615     0.9957   2.573 0.010651 *  
+as.factor(watercourse)Lea         1.9783     1.0055   1.967 0.050205 .  
+as.factor(watercourse)Mimram      1.6565     0.7716   2.147 0.032724 *  
+as.factor(watercourse)Misbourne   0.5598     0.7176   0.780 0.436078    
+as.factor(watercourse)Ver         0.8830     0.7770   1.136 0.256853    
+as.factor(regime_type)SP         -1.2057     0.6192  -1.947 0.052610 .  
+as.factor(regime_type)E          -2.9211     1.9527  -1.496 0.135895    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value    
+s(years_post_restoration)  1.000  1.000  1.045    0.308    
+s(month)                   1.000  1.000  0.839    0.361    
+s(distance_from_source)    1.092  1.109  0.833    0.297    
+s(Q90z)                    1.448  1.691 15.826 6.96e-05 ***
+s(Q90zL1)                  1.000  1.000  0.392    0.532    
+s(site_id)                60.417 69.000  7.811  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.739   Deviance explained = 79.6%
+GCV =  2.116  Scale est. = 1.6447    n = 332
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+response ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df     F p-value
+as.factor(watercourse)  5 1.768  0.1199
+as.factor(regime_type)  2 2.744  0.0662
+
+Approximate significance of smooth terms:
+                             edf Ref.df      F  p-value
+s(years_post_restoration)  1.000  1.000  1.045    0.308
+s(month)                   1.000  1.000  0.839    0.361
+s(distance_from_source)    1.092  1.109  0.833    0.297
+s(Q90z)                    1.448  1.691 15.826 6.96e-05
+s(Q90zL1)                  1.000  1.000  0.392    0.532
+s(site_id)                60.417 69.000  7.811  < 2e-16
+
+Method: GCV   Optimizer: magic
+Smoothing parameter selection converged after 71 iterations.
+The RMS GCV score gradient at convergence was 0.0005262633 .
+The Hessian was not positive definite.
+Model rank =  96 / 96 
+
+Basis dimension (k) checking results. Low p-value (k-index<1) may
+indicate that k is too low, especially if edf is close to k'.
+
+                             k'   edf k-index p-value
+s(years_post_restoration)  2.00  1.00    1.12    0.99
+s(month)                   2.00  1.00    1.18    1.00
+s(distance_from_source)    2.00  1.09    1.15    1.00
+s(Q90z)                    2.00  1.45    1.07    0.92
+s(Q90zL1)                  2.00  1.00    1.06    0.88
+s(site_id)                78.00 60.42      NA      NA
+		%ALG	
+Family: poisson 
+Link function: log 
+
+Formula:
+log(response + 1) ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric coefficients:
+                                 Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                      0.938407   0.207923   4.513 6.38e-06 ***
+as.factor(watercourse)Gade      -1.135206   0.359791  -3.155 0.001604 ** 
+as.factor(watercourse)Lea       -0.476381   0.382399  -1.246 0.212849    
+as.factor(watercourse)Mimram    -0.760529   0.229632  -3.312 0.000926 ***
+as.factor(watercourse)Misbourne -0.602135   0.240260  -2.506 0.012204 *  
+as.factor(watercourse)Ver       -0.907141   0.278830  -3.253 0.001140 ** 
+as.factor(regime_type)SP        -0.002393   0.201099  -0.012 0.990506    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                            edf Ref.df Chi.sq p-value  
+s(years_post_restoration) 1.000  1.000  0.350  0.5541  
+s(month)                  1.000  1.000  2.135  0.1439  
+s(distance_from_source)   1.838  1.953  4.981  0.0765 .
+s(Q90z)                   1.000  1.000  0.203  0.6525  
+s(Q90zL1)                 1.194  1.348  0.077  0.9231  
+s(site_id)                7.197 56.000  9.143  0.1130  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.349   Deviance explained = 37.4%
+UBRE = -0.13759  Scale est. = 1         n = 177
+
+Family: poisson 
+Link function: log 
+
+Formula:
+log(response + 1) ~ as.factor(watercourse) + as.factor(regime_type) + 
+    s(years_post_restoration, k = 3) + s(month, k = 3) + s(distance_from_source, 
+    k = 3) + s(Q90z, k = 3) + s(Q90zL1, k = 3) + s(site_id, bs = "re")
+
+Parametric Terms:
+                       df Chi.sq  p-value
+as.factor(watercourse)  5     23 0.000338
+as.factor(regime_type)  1      0 0.990506
+
+Approximate significance of smooth terms:
+                             edf Ref.df Chi.sq p-value
+s(years_post_restoration)  1.000  1.000  0.350  0.5541
+s(month)                   1.000  1.000  2.135  0.1439
+s(distance_from_source)    1.838  1.953  4.981  0.0765
+s(Q90z)                    1.000  1.000  0.203  0.6525
+s(Q90zL1)                  1.194  1.348  0.077  0.9231
+s(site_id)                 7.197 56.000  9.143  0.1130
+
+Method: UBRE   Optimizer: outer newton
+full convergence after 9 iterations.
+Gradient range [-1.474218e-07,7.697303e-09]
+(score -0.1375913 & scale 1).
+Hessian positive definite, eigenvalue range [1.635711e-08,0.01456632].
+Model rank =  81 / 81 
+
+Basis dimension (k) checking results. Low p-value (k-index<1) may
+indicate that k is too low, especially if edf is close to k'.
+
+                             k'   edf k-index p-value   
+s(years_post_restoration)  2.00  1.00    0.86   0.050 * 
+s(month)                   2.00  1.00    0.79   0.005 **
+s(distance_from_source)    2.00  1.84    0.91   0.155   
+s(Q90z)                    2.00  1.00    0.95   0.275   
+s(Q90zL1)                  2.00  1.19    0.96   0.360   
+s(site_id)                64.00  7.20      NA      NA   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
