@@ -42,10 +42,6 @@ Flows <- read_excel(MasterData, sheet = "Velocity_Master")
 
 #create new rows in velocity master sheet
 
-#create a mean velocity column
-
-Flows <- subset(Flows, select = -c(count))
-
 Flows <- Flows %>%
   transform(velocity = as.numeric(velocity)) %>% #change column from character to numeric caused by '-' and '?'entries
   transform(depth = as.numeric(depth)) %>% #change column from character to numeric
