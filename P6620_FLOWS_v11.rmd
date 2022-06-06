@@ -1,21 +1,35 @@
 ---
-  title: "Hydro Ecology Model - River Flows"
+title: "Hydro Ecology Model - River Flows"
 author: "Rosalind Brown and Ben Eastwood"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
   highlight: tango
-number_sections: yes
-theme: united
-toc: yes
-toc_depth: 3
-toc_float: yes
+  number_sections: yes
+  theme: united
+  toc: yes
+  toc_depth: 3
+  toc_float: yes
 params:
   date: !r Sys.Date
 subtitle: APEM Project No. P00006620
 editor_options:
   chunk_output_type: console
 ---
+
+
+
+```{r}
+
+## clear workspace
+rm(list = ls())
+
+## markdown document settings
+library(knitr, quietly = TRUE)
+opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, fig.path = 'Plots/') 
+
+```
+
 
 #PACKAGES
 
@@ -49,7 +63,7 @@ library("data.table")
 
 ```{r} 
 
-MasterData <- "Data/P6620 Master dataset_2022-05-31.xlsx"
+MasterData <- "Data/P6620 Master dataset.xlsx"
 
 #Schemes <- read_excel(MasterData, sheet = "Schemes")
 Flows <- read_excel(MasterData, sheet = "Velocity_Master")
@@ -68,8 +82,12 @@ Flows <- Flows %>%
   transform(velocity = as.numeric(velocity)) %>% #change column from character to numeric caused by '-' and '?'entries
   transform(depth = as.numeric(depth)) %>% #change column from character to numeric
   dplyr::filter(velocity != "DRY") %>% #don't include the spot gauging location that are detailed as DRY
+  dplyr::filter(!is.na(velocity)) %>%
+  dplyr::filter(depth != 0) %>%
   dplyr::group_by(site_name, year, month) %>%
-  dplyr::mutate(chan_width_m = max(dist_from_bank, na.rm = TRUE)) %>% #diff between max and min
+  dplyr::mutate(min_width_m = min(dist_from_bank, na.rm = TRUE)) %>%
+  dplyr::mutate(max_width_m = max(dist_from_bank, na.rm = TRUE)) %>% #diff between max and min
+  dplyr::mutate(chan_width_m = (max_width_m - min_width_m)) %>% #diff between max and min
   dplyr::mutate(mean_vel_msec = mean(velocity, na.rm = TRUE)) %>% #calculate mean velocities for each specific site/year/month
   dplyr::mutate(max_vel_msec = max(velocity, na.rm = TRUE)) %>% #find the max velocity for each specific site/year/month
   dplyr::mutate(sd_vel = sd(velocity, na.rm = TRUE)) %>% #calculate standard deviation velocities for each specific site/year/month
@@ -78,11 +96,31 @@ Flows <- Flows %>%
   dplyr::mutate(sd_depth = sd(depth, na.rm = TRUE)) %>% #calculate standard deviation depth for each specific site/year/month
   dplyr::mutate(discharge = mean_vel_msec * mean_depth_cm * chan_width_m) %>% #calculate discharges by multiplying mean velocity by mean depth by channel width per specific transect
   dplyr::mutate(trans_points= (count = n())) %>%
-  dplyr::mutate(gravel = ifelse(substrate_type %like% "gravel|Gravel", TRUE, FALSE)) %>%
-  dplyr::mutate(silt = ifelse(substrate_type %like% "silt|Silt", TRUE, FALSE)) %>%
-  dplyr::mutate(vegetation = ifelse(substrate_type %like% "vegetation|Vegetation", TRUE, FALSE)) %>%
+  dplyr::mutate(gravel = ifelse(substrate_type %like% "gravel|Gravel", 1, 0)) %>%
+  dplyr::mutate(silt = ifelse(substrate_type %like% "silt|Silt", 1, 0)) %>%
+  dplyr::mutate(vegetation = ifelse(substrate_type %like% "vegetation|Vegetation", 1, 0)) %>%
+  dplyr::mutate(total_gravel = sum(gravel)) %>%
+  dplyr::mutate(total_silt = sum(silt)) %>%
+  dplyr::mutate(total_vegetation = sum(vegetation)) %>%
+  dplyr::mutate(prop_gravel = (total_gravel/trans_points)) %>%
+  dplyr::mutate(prop_silt = (total_silt/trans_points)) %>%
+  dplyr::mutate(prop_vegetation = (total_vegetation/trans_points)) %>%
   ungroup()
 
 
 ``` 
 
+
+
+# EXPORT DATA
+
+```{r}
+
+# create date-stamped filename
+filename <- paste("Outputs/Flows/P6620_processed_flows_data_",format(Sys.time(), "%Y%m%d"),".xlsx", sep = "")
+
+# export data to Excel
+writexl::write_xlsx(Flows, 
+                    path = filename)
+
+```
