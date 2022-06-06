@@ -20,9 +20,6 @@ editor_options:
 #PACKAGES
 
 ```{r} 
-  ##########################################
-####### Load libraries data ##############
-##########################################
 
 # to install hetoolkit from github
 install.packages("devtools")
