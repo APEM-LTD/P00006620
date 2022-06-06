@@ -38,7 +38,7 @@ opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, fig.path = 'Plots/')
 # to install hetoolkit from github
 install.packages("devtools")
 library(devtools)
-install_github("APEM-LTD/hetoolkit")
+#install_github("APEM-LTD/hetoolkit")
 library(hetoolkit)
 
 library(hetoolkit) # for EA hydro-ecology toolkit
@@ -66,7 +66,7 @@ library("data.table")
 MasterData <- "Data/P6620 Master dataset.xlsx"
 
 #Schemes <- read_excel(MasterData, sheet = "Schemes")
-Flows <- read_excel(MasterData, sheet = "Velocity_Master")
+Flows_master <- read_excel(MasterData, sheet = "Velocity_Master")
 #RawFlows <- read_excel(MasterData, sheet = "Flows")
 
 ```
@@ -78,7 +78,7 @@ Flows <- read_excel(MasterData, sheet = "Velocity_Master")
 
 #create new rows in velocity master sheet
 
-Flows <- Flows %>%
+Flows <- Flows_master %>%
   transform(velocity = as.numeric(velocity)) %>% #change column from character to numeric caused by '-' and '?'entries
   transform(depth = as.numeric(depth)) %>% #change column from character to numeric
   dplyr::filter(velocity != "DRY") %>% #don't include the spot gauging location that are detailed as DRY
@@ -95,10 +95,10 @@ Flows <- Flows %>%
   dplyr::mutate(max_depth_cm = max(depth, na.rm = TRUE)) %>% #find the max depth for each specific site/year/month
   dplyr::mutate(sd_depth = sd(depth, na.rm = TRUE)) %>% #calculate standard deviation depth for each specific site/year/month
   dplyr::mutate(discharge = mean_vel_msec * mean_depth_cm * chan_width_m) %>% #calculate discharges by multiplying mean velocity by mean depth by channel width per specific transect
-  dplyr::mutate(trans_points= (count = n())) %>%
+  dplyr::mutate(trans_points = (count = n())) %>%
   dplyr::mutate(gravel = ifelse(substrate_type %like% "gravel|Gravel", 1, 0)) %>%
   dplyr::mutate(silt = ifelse(substrate_type %like% "silt|Silt", 1, 0)) %>%
-  dplyr::mutate(vegetation = ifelse(substrate_type %like% "vegetation|Vegetation", 1, 0)) %>%
+  dplyr::mutate(vegetation = ifelse(substrate_type %like% "Veg|veg|ranunculus|vegetation|Vegetation|macrophyte|watercress|berula", 1, 0)) %>%
   dplyr::mutate(total_gravel = sum(gravel)) %>%
   dplyr::mutate(total_silt = sum(silt)) %>%
   dplyr::mutate(total_vegetation = sum(vegetation)) %>%
