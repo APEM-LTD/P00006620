@@ -21,6 +21,8 @@ library(gridExtra) # for multi-plots
 library(lmerTest) # for lme4 function
 library(mgcv) # for gam modelling
 library(lubridate) # for date manipulation
+library(stringr) #using str_detect function
+library("data.table")
 
 
 
@@ -30,9 +32,9 @@ library(lubridate) # for date manipulation
 
 MasterData <- "Data/P6620 Master dataset_2022-05-31.xlsx"
 
-Schemes <- read_excel(MasterData, sheet = "Schemes")
+#Schemes <- read_excel(MasterData, sheet = "Schemes")
 Flows <- read_excel(MasterData, sheet = "Velocity_Master")
-RawFlows <- read_excel(MasterData, sheet = "Flows")
+#RawFlows <- read_excel(MasterData, sheet = "Flows")
 
 ##########################################
 ############### Data review ##############
@@ -49,7 +51,7 @@ Flows <- Flows %>%
   transform(depth = as.numeric(depth)) %>% #change column from character to numeric
   dplyr::filter(velocity != "DRY") %>% #don't include the spot gauging location that are detailed as DRY
   dplyr::group_by(site_name, year, month) %>%
-  dplyr::mutate(chan_width_m = max(dist_from_bank, na.rm = TRUE)) %>%
+  dplyr::mutate(chan_width_m = max(dist_from_bank, na.rm = TRUE)) %>% #diff between max and min
   dplyr::mutate(mean_vel_msec = mean(velocity, na.rm = TRUE)) %>% #calculate mean velocities for each specific site/year/month
   dplyr::mutate(max_vel_msec = max(velocity, na.rm = TRUE)) %>% #find the max velocity for each specific site/year/month
   dplyr::mutate(sd_vel = sd(velocity, na.rm = TRUE)) %>% #calculate standard deviation velocities for each specific site/year/month
@@ -58,7 +60,9 @@ Flows <- Flows %>%
   dplyr::mutate(sd_depth = sd(depth, na.rm = TRUE)) %>% #calculate standard deviation depth for each specific site/year/month
   dplyr::mutate(discharge = mean_vel_msec * mean_depth_cm * chan_width_m) %>% #calculate discharges by multiplying mean velocity by mean depth by channel width per specific transect
   dplyr::mutate(trans_points= (count = n())) %>%
-  dplyr::mutate(gravel = ifelse(substrate_type %in% c("gravel","gravels", "Gravel", "Gravels"), TRUE, FALSE)) %>%
+  dplyr::mutate(gravel = ifelse(substrate_type %like% "gravel|Gravel", TRUE, FALSE)) %>%
+  dplyr::mutate(silt = ifelse(substrate_type %like% "silt|Silt", TRUE, FALSE)) %>%
+  dplyr::mutate(vegetation = ifelse(substrate_type %like% "vegetation|Vegetation", TRUE, FALSE)) %>%
   ungroup()
 
 
