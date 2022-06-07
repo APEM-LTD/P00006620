@@ -98,7 +98,7 @@ Flows <- Flows_master %>%
   dplyr::mutate(trans_points = (count = n())) %>%
   dplyr::mutate(gravel = ifelse(substrate_type %like% "gravel|Gravel", 1, 0)) %>%
   dplyr::mutate(silt = ifelse(substrate_type %like% "silt|Silt", 1, 0)) %>%
-  dplyr::mutate(vegetation = ifelse(substrate_type %like% "Veg|veg|ranunculus|vegetation|Vegetation|macrophyte|watercress|berula", 1, 0)) %>%
+  dplyr::mutate(vegetation = ifelse(substrate_type %like% "Veg|veg|ranunculus|vegetation|Vegetation|macrophyte|watercress|berula|sparganiumSparganium|glyceria|Glyceria", 1, 0)) %>%
   dplyr::mutate(total_gravel = sum(gravel)) %>%
   dplyr::mutate(total_silt = sum(silt)) %>%
   dplyr::mutate(total_vegetation = sum(vegetation)) %>%
