@@ -87,14 +87,14 @@ Flows <- Flows_master %>%
   dplyr::group_by(site_name, year, month) %>%
   dplyr::mutate(min_width_m = min(dist_from_bank, na.rm = TRUE)) %>%
   dplyr::mutate(max_width_m = max(dist_from_bank, na.rm = TRUE)) %>% #diff between max and min
-  dplyr::mutate(chan_width_m = (max_width_m - min_width_m)) %>% #diff between max and min
+  dplyr::mutate(wetted_width_m = (max_width_m - min_width_m)) %>% #diff between max and min
   dplyr::mutate(mean_vel_msec = mean(velocity, na.rm = TRUE)) %>% #calculate mean velocities for each specific site/year/month
   dplyr::mutate(max_vel_msec = max(velocity, na.rm = TRUE)) %>% #find the max velocity for each specific site/year/month
   dplyr::mutate(sd_vel = sd(velocity, na.rm = TRUE)) %>% #calculate standard deviation velocities for each specific site/year/month
   dplyr::mutate(mean_depth_cm = mean(depth, na.rm = TRUE)) %>% #calculate mean velocities for each specific site/year/month
   dplyr::mutate(max_depth_cm = max(depth, na.rm = TRUE)) %>% #find the max depth for each specific site/year/month
   dplyr::mutate(sd_depth = sd(depth, na.rm = TRUE)) %>% #calculate standard deviation depth for each specific site/year/month
-  dplyr::mutate(discharge = mean_vel_msec * mean_depth_cm * chan_width_m) %>% #calculate discharges by multiplying mean velocity by mean depth by channel width per specific transect
+  dplyr::mutate(discharge = mean_vel_msec * mean_depth_cm * wetted_width_m) %>% #calculate discharges by multiplying mean velocity by mean depth by channel width per specific transect
   dplyr::mutate(trans_points = (count = n())) %>%
   dplyr::mutate(gravel = ifelse(substrate_type %like% "gravel|Gravel", 1, 0)) %>%
   dplyr::mutate(silt = ifelse(substrate_type %like% "silt|Silt", 1, 0)) %>%
@@ -107,6 +107,22 @@ Flows <- Flows_master %>%
   dplyr::mutate(prop_vegetation = (total_vegetation/trans_points)) %>%
   ungroup()
 
+
+## testing if possible to calculate full wetted width, without excluding first channel section... Works, but assumes near bank is wetted, when depth != 0 at min(dist_from_bank)
+#  dplyr::mutate(min_width_wetted = case_when(
+#    (dist_from_bank == min(dist_from_bank) & depth != 0) ~ 0, 
+#    TRUE ~ dist_from_bank)) %>%
+#  dplyr::filter(depth != 0) %>%
+#  dplyr::mutate(min_width_wetted = min(min_width_wetted, na.rm = TRUE)) %>%
+#  dplyr::mutate(max_width_m = max(dist_from_bank, na.rm = TRUE)) %>% #diff between max and min
+#  dplyr::mutate(chan_width_m = (max_width_m - min_width_wetted)) %>% #diff
+
+
+## summary data
+Flows_Summary <- Flows %>%
+  dplyr::select(-depth, -dist_from_bank, -velocity, -substrate_type) %>%
+  group_by(site_id, site_name, date, year, month, season) %>%
+  dplyr::filter(!duplicated(min_width_m))
 
 ``` 
 
